@@ -13,7 +13,7 @@ const Search = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 value={searchQuery}
             />
-            <button type="submit">Search</button>
+            <button type="submit" aria-label="search" onClick={(e) => e.preventDefault()}>Search</button>
         </form>
         {searchQuery && <CharacterData searchQuery={searchQuery}/>}
         </div>

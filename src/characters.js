@@ -2,7 +2,7 @@ import md5 from "md5"
 import { useEffect, useState } from "react"
 
 
-const CharacterData = ({characters}) => {
+const CharacterData = ({searchQuery}) => {
     const publickey = process.env.REACT_APP_PUBLIC_KEY
     const privatekey = process.env.REACT_APP_PRIVATE_KEY
 
@@ -18,7 +18,7 @@ const CharacterData = ({characters}) => {
             const hash = genHash(timeStamp)
 
             try {
-                const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=${timeStamp}&apikey=${publickey}&hash=${hash}&name=${characters}`)
+                const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=${timeStamp}&apikey=${publickey}&hash=${hash}&name=${searchQuery}`)
 
                 const response = await data.json()
 
@@ -27,6 +27,7 @@ const CharacterData = ({characters}) => {
                     throw new Error("Response is not ok")
                 }
                 setCharData(response.data)
+                console.log(response)
             } 
             
             catch(error) {
@@ -34,12 +35,28 @@ const CharacterData = ({characters}) => {
             }
     }
     fetchData()
-    },[characters])
+    },[searchQuery])
 
     return (
         <div className="data">
-        <h1>{charData.offset}</h1>
-        <p>{charData.limit}</p>
+        {charData.results && charData.results.map((res) => (
+            <div key={res.id}>
+            <p>
+                <strong>{res.name}</strong>
+            </p>
+            <div>
+                {res.description}
+            </div>
+            <div>
+                <img 
+                    src={`${res.thumbnail.path}/portrait_medium.${res.thumbnail.extension}`}
+                    alt={res.name}
+                    style={{maxWidth: '100%', height: 'auto'}}
+                />
+            </div>
+            </div>
+        ))
+        }
         </div>
     )
 }
