@@ -8,7 +8,7 @@ const Search = () => {
         <div>
         <form className="input-field">
             <input 
-                type="search"
+                type="text"
                 placeholder="Who's that character?"
                 onChange={(e) => setSearchQuery(e.target.value)}
                 value={searchQuery}
