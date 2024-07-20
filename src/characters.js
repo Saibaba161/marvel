@@ -3,11 +3,13 @@ import { useEffect, useState } from "react"
 
 
 const CharacterData = ({characters}) => {
+    const publickey = process.env.REACT_APP_PUBLIC_KEY
+    const privatekey = process.env.REACT_APP_PRIVATE_KEY
 
     const [charData, setCharData] = useState({})
 
     const genHash = (ts) => {
-        return md5(ts+process.env.PRIVATE_KEY+process.env.PUBLIC_KEY)
+        return md5(ts+privatekey+publickey)
     }
 
     useEffect(() => {
@@ -16,7 +18,7 @@ const CharacterData = ({characters}) => {
             const hash = genHash(timeStamp)
 
             try {
-                const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=${timeStamp}&apikey=${process.env.PUBLIC_KEY}&hash=${hash}&name=${characters}`)
+                const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=${timeStamp}&apikey=${publickey}&hash=${hash}&name=${characters}`)
 
                 const response = await data.json()
 
