@@ -22,8 +22,7 @@ code {
 .input-field input{
   min-width: 500px;
   min-height: 30px;
-}
-
-.data {
-  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
