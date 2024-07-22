@@ -42,81 +42,43 @@ const CharacterData = () => {
     }
 
     return (
-        <div className="input-field">
-          <form onSubmit={handleSubmit}>
+        <div className="main-content">
+          <form onSubmit={handleSubmit} className="search-form">
             <input 
               placeholder="Who's your fav character"
               onChange={(e) => setSearchQuery(e.target.value)}
               value={searchQuery}
+              className="search-input"
             />
-            <button type="submit">Search</button>
+            <button type="submit" className="search-button">Search</button>
           </form>
       
-          <div className="data">
+          <div className="character-grid">
             {charData.results && charData.results.map((character) => (
-              <div key={character.id}>
-                <h2>{character.name}</h2>
-                <p>Description: {character.description}</p>
-
+              <div key={character.id} className="character-card">
                 <img 
                   src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
                   alt={character.name}
-                  style={{maxWidth: '300px', height: 'auto'}}
+                  className="character-image"
                 />
+
+                <h2 className="character-name">{character.name}</h2>
+                <p className="character-description">Description: {character.description}</p>
                 
+                <div className="character-details">
                 <h3>Comics:</h3>
-                <p>Collection URI: {character.comics.collectionURI}</p>
-                <ul>
-                  {character.comics.items.map((comic, index) => (
-                    <li key={index}>
-                      {comic.name} - {comic.resourceURI}
-                    </li>
-                  ))}
-                </ul>
+                <p>Available: {character.comics.available}</p>
                 
                 <h3>Series:</h3>
                 <p>Available: {character.series.available}</p>
-                <p>Collection URI: {character.series.collectionURI}</p>
-                <ul>
-                  {character.series.items.map((series, index) => (
-                    <li key={index}>
-                      {series.name} - {series.resourceURI}
-                    </li>
-                  ))}
-                </ul>
                 
                 <h3>Stories:</h3>
                 <p>Available: {character.stories.available}</p>
-                <p>Collection URI: {character.stories.collectionURI}</p>
-                <ul>
-                  {character.stories.items.map((story, index) => (
-                    <li key={index}>
-                      {story.name} - Type: {story.type} - {story.resourceURI}
-                    </li>
-                  ))}
-                </ul>
+                
                 
                 <h3>Events:</h3>
                 <p>Available: {character.events.available}</p>
-                <p>Collection URI: {character.events.collectionURI}</p>
-                <ul>
-                  {character.events.items.map((event, index) => (
-                    <li key={index}>
-                      {event.name} - {event.resourceURI}
-                    </li>
-                  ))}
-                </ul>
-                
-                <h3>URLs:</h3>
-                <ul>
-                  {character.urls.map((url, index) => (
-                    <li key={index}>
-                      <a href={url.url} target="_blank" rel="noopener noreferrer">
-                        {url.type}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              </div>
               </div>
             ))}
           </div>

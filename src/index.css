@@ -1,28 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --marvel-red: #ED1D24;
+  --marvel-blue: #518CCA;
+  --marvel-black: #000000;
+  --marvel-white: #FFFFFF;
+}
+
 body {
+  font-family: 'Roboto';
+  background-color: #f0f0f0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(90deg, rgba(4,4,4,1) 100%, rgba(9,9,121,1) 100%);
 }
 
-.input-field {
+.header {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content:baseline;
+  background-color: var(--marvel-black);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-.input-field input{
-  min-width: 500px;
-  min-height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.logo {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
 }
+
+.header h1{
+  font-family: 'Roboto';
+  color: var(--marvel-white);
+  margin-left: 500px;
+}
+
+.search-form {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid var(--marvel-blue);
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: var(--marvel-blue);
+  color: var(--marvel-white);
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #3a6941;
+}
+
+.character-grid {
+  font-family: 'Roboto';
+  display: flex;
+  flex-direction:column;
+  gap: 20px;
+}
+
+.character-card {
+  font-family: 'Roboto';
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto 1fr;
+  gap: 10px;
+  background-color: var(--marvel-white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.character-card:hover {
+  transform: translateX(5px);
+}
+
+.character-image {
+  grid-row: 1 / span 3;
+  grid-column: 1;
+  width: 200px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.character-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.character-name {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+  font-size: 24px;
+  margin-left: 15px;
+}
+
+.character-description {
+  font-size: 14px;
+  color: var(--marvel-black);
+}
+
+.character-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.character-details h3{
+  margin: 10px 0 5px 0;
+  color: var(--marvel-blue);
+  font-size: 18px;
+}
+
+.character-details p{
+  margin: 0 0 10px 0;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .character-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .character-card {
+    flex-direction: column;
+  }
+} 
