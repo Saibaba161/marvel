@@ -18,7 +18,7 @@ const CharacterData = () => {
         const hash = genHash(timeStamp)
 
         try {
-            const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=${timeStamp}&apikey=${publickey}&hash=${hash}&name=${searchQuery}`)
+            const data = await fetch(`https://gateway.marvel.com:443/v1/public/characters?ts=${timeStamp}&apikey=${publickey}&hash=${hash}&nameStartsWith=${searchQuery}`)
 
             const response = await data.json()
 

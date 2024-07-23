@@ -74,7 +74,10 @@ body {
 .character-grid {
   font-family: 'Roboto';
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+  border-radius: 15px;
 }
 
 .character-card {
@@ -86,12 +89,25 @@ body {
   background-color: var(--marvel-white);
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
 }
 
+.character-card:nth-child(even) {
+  background-color: #cbdcee;
+}
+
+.character-card:not(:last-child)::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #555;
+  margin-top: 20px;
+}
+
 .character-card:hover {
-  transform: translateX(5px);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .character-image {
