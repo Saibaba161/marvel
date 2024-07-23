@@ -63,7 +63,7 @@ const CharacterData = () => {
                 />
 
                 <h2 className="character-name">{character.name}</h2>
-                <p className="character-description">Description: {character.description}</p>
+                <p className="character-description">{character.description}</p>
                 
                 <div className="character-details">
                 <h3>Comics:</h3>

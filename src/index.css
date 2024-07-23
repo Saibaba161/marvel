@@ -69,17 +69,18 @@ body {
   background-color: #3a6941;
 }
 
+/*Character Card*/
+
 .character-grid {
   font-family: 'Roboto';
   display: flex;
   flex-direction:column;
-  gap: 20px;
 }
 
 .character-card {
   font-family: 'Roboto';
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 4fr;
   grid-template-rows: auto auto 1fr;
   gap: 10px;
   background-color: var(--marvel-white);
@@ -97,43 +98,54 @@ body {
   grid-row: 1 / span 3;
   grid-column: 1;
   width: 200px;
-  height: 320px;
+  height: 350px;
   object-fit: cover;
   border-radius: 10px;
+  margin-left: 50px;
+  margin-top: 15px;
 }
 
-.character-info {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-}
 
 .character-name {
   grid-column: 2;
   grid-row: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  font-size: 24px;
-  margin-left: 15px;
+  padding: 10px;
+  font-size: 34px;
 }
 
 .character-description {
-  font-size: 14px;
+  grid-column: 2;
+  grid-row: 2;
+  margin: 0;
+  padding: 10px;
+  font-size: 20px;
   color: var(--marvel-black);
 }
 
 .character-details {
-  display: flex;
-  flex-direction: column;
+  grid-column: 2;
+  grid-row: 3;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5px 10px;
+  align-content: start;
 }
 
 .character-details h3{
-  margin: 10px 0 5px 0;
+  margin: 0;
+  grid-column: 1;
   color: var(--marvel-blue);
   font-size: 18px;
 }
 
 .character-details p{
-  margin: 0 0 10px 0;
+  margin: 0;
+  grid-column: 1;
   font-size: 14px;
 }
 
